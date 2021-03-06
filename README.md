@@ -1,2 +1,5 @@
 # angular-electron-boilerplate
-Boilerplate for electron/angular app
+
+:construction: Work in progress.
+
+A simple boilerplate for starting Electron + Angular app.
