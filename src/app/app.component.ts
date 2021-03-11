@@ -1,6 +1,4 @@
-/* eslint-disable require-jsdoc */
 import {Component} from '@angular/core';
-import {log} from '@pierred/git-commander';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +9,5 @@ export class AppComponent {
   title = 'angular-electron-boilerplate';
 
   constructor() {
-    this.init();
-  }
-
-  async init() {
-    const e = await log();
-    console.log(e);
   }
 }
