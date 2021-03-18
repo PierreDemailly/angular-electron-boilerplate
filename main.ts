@@ -1,10 +1,10 @@
-import {app, BrowserWindow, screen} from 'electron';
+import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
 let win: BrowserWindow | null = null;
 const args = process.argv.slice(1);
-const serve = args.some((val) => val === '--serve');
+const serve = true;
 
 // eslint-disable-next-line require-jsdoc
 function createWindow(): BrowserWindow {
@@ -20,8 +20,8 @@ function createWindow(): BrowserWindow {
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
-      contextIsolation: false, // false if you want to run 2e2 test with Spectron
-      enableRemoteModule: true, // true if you want to run 2e2 test  with Spectron or use remote module in renderer context (ie. Angular)
+      contextIsolation: false,
+      enableRemoteModule: true,
     },
   });
 
@@ -35,7 +35,7 @@ function createWindow(): BrowserWindow {
     win.loadURL('http://localhost:4200');
   } else {
     win.loadURL(url.format({
-      pathname: path.join(__dirname, 'dist/index.html'),
+      pathname: path.join(__dirname, 'dist/app/index.html'),
       protocol: 'file:',
       slashes: true,
     }));

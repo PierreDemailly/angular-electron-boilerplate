@@ -2,17 +2,11 @@
   "name": "angular-electron-boilerplate",
   "version": "0.0.0",
   "scripts": {
+    "prebuild": "rimraf dist",
     "postinstall": "electron-builder install-app-deps",
     "ng": "ng",
-    "start": "npm-run-all -p electron:serve ng:serve",
-    "build": "npm run electron:serve-tsc && ng build --base-href ./",
-    "build:dev": "npm run build -- -c dev",
-    "build:prod": "npm run build -- -c production",
-    "ng:serve": "ng serve -c web -o",
-    "electron:serve-tsc": "tsc -p tsconfig.serve.json",
-    "electron:serve": "wait-on tcp:4200 && npm run electron:serve-tsc && npx electron . --serve",
-    "electron:local": "npm run build:prod && npx electron .",
-    "electron:build": "npm run build:prod && electron-builder build --publish=never",
+    "build": "ng build --base-href ./ && tsc -p tsconfig.electron.json && npx electron .",
+    "build:prod": "ng build --configuration production --base-href ./ && tsc -p tsconfig.electron.json && npx electron .",
     "test": "ng test --watch=false",
     "test:watch": "ng test",
     "e2e": "npm run build:prod && cross-env TS_NODE_PROJECT='e2e/tsconfig.e2e.json' mocha --timeout 300000 --require ts-node/register e2e/**/*.e2e.ts",
@@ -36,14 +30,13 @@
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "11.0.0",
-    "@angular-devkit/build-angular": "~0.1102.0",
+    "@angular-devkit/build-angular": "^0.900.7",
     "@angular/cli": "~11.2.0",
     "@angular/compiler-cli": "~11.2.0",
     "@types/jasmine": "~3.6.0",
     "@types/node": "12.12.6",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
-    "codelyzer": "^6.0.0",
     "electron": "11.2.0",
     "electron-builder": "22.9.1",
     "electron-reload": "1.5.0",
@@ -58,11 +51,9 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "npm-run-all": "^4.1.5",
     "protractor": "~7.0.0",
+    "rimraf": "^3.0.2",
     "ts-node": "~8.3.0",
     "typescript": "~4.1.2",
     "wait-on": "^5.2.1"
-  },
-  "engines": {
-    "node": ">=10.13.0"
   }
 }
