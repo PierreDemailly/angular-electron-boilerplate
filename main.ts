@@ -4,7 +4,8 @@ import * as url from 'url';
 
 let win: BrowserWindow | null = null;
 const args = process.argv.slice(1);
-const serve = true;
+const serve = args.some((val) => val === '--serve');
+;
 
 // eslint-disable-next-line require-jsdoc
 function createWindow(): BrowserWindow {
