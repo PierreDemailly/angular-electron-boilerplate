@@ -8,7 +8,7 @@
     "build": "ng build --base-href ./ && npm run electron:build && npx electron . && npm run rmdist",
     "build:prod": "ng build --configuration production --base-href ./ && npm run electron:build && npx electron .",
     "electron:build": "tsc -p tsconfig.electron.json",
-    "electron:watch": "wait-on tcp:4200 && npm run electron:build && npx electron . --serve && npm run rmdist",
+    "electron:watch": "wait-on tcp:4200 && npm run electron:build && npx electron . --serve",
     "rmdist": "rm -rf dist out-tsc main.js",
     "test": "ng test --watch=false",
     "test:watch": "ng test",
