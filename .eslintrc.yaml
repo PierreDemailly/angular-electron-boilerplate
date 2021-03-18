@@ -15,3 +15,4 @@ rules:
     - 120
     - 4
   new-cap: 0
+  require-jsdoc: 0
